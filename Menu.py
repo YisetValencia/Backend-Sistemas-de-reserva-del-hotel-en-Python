@@ -15,7 +15,6 @@ def validar_id(cadena):
     """
     cadena = cadena.strip()
 
-    # Si está vacío o no es número, vuelve a pedirlo
     if len(cadena) == 0 or not cadena.isdigit():
         return validar_id(input("Ingrese un ID válido: "))
 
