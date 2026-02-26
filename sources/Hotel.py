@@ -7,7 +7,7 @@ from sources.Habitacion import Habitacion
 
 class Hotel:
     """
-    Representa un hotel que gestiona habitaciones y reservas.
+    Representa un hotel que gestiona habitaciones y reservas
 
     El hotel contiene habitaciones de tipo estándar, presidencial
     y premium, además de una lista de reservas activas.
