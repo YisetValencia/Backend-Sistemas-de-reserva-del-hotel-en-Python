@@ -8,6 +8,93 @@ habitacionPresi = HabitacionPresidencial
 habitacionPre = HabitacionPremium
 
 
+def validar_id(cadena):
+    """
+    Returns:
+        str: El ID validado si es numérico.
+    """
+    cadena = cadena.strip()
+
+    # Si está vacío o no es número, vuelve a pedirlo
+    if len(cadena) == 0 or not cadena.isdigit():
+        return validar_id(input("Ingrese un ID válido: "))
+
+    # En lugar de return cadena.isdigit(), devuelve la cadena misma
+    return cadena
+
+
+def validar_opcion(cadena: str) -> bool:
+    """
+    Verifica si la opción seleccionada para el menú principal es válida.
+
+    Args:
+        cadena (str): Entrada del usuario.
+
+    Returns:
+        bool: True si la opción está entre "1" y "4", False en caso contrario.
+    """
+    cadena = cadena.strip().lower()
+    opciones = ["1", "2", "3", "4"]
+    if len(cadena) == 0:
+        return False
+    return cadena in opciones
+
+
+def validar_opcion_yes(cadena: str) -> bool:
+    """
+    Valida las respuestas de confirmación del usuario para servicios adicionales.
+
+    Args:
+        cadena (str): Entrada del usuario (se espera 'si' o 'no').
+
+    Returns:
+        bool: True si la entrada es válida, False si está vacía o es incorrecta.
+    """
+    cadena = cadena.strip().lower()
+    opciones = ["si", "no"]
+    if len(cadena) == 0:
+        return False
+    return cadena in opciones
+
+
+def validar_numero_entero(mensaje: str) -> int:
+    """
+    Solicita y valida de forma recursiva que el usuario ingrese un número
+    entero mayor a cero.
+
+    Args:
+        mensaje (str): El texto que se mostrará al usuario en el input.
+
+    Returns:
+        int: El número entero validado.
+    """
+    numero = input(mensaje)
+    if numero.isdigit() and int(numero) > 0:
+        return int(numero)
+    else:
+        print("Ingrese un numero valido")
+        return validar_numero_entero(mensaje)
+
+
+def validar_cadena_solo_letras(mensaje: str) -> str:
+    """
+    Solicita y valida de forma recursiva que la entrada contenga
+    únicamente caracteres alfabéticos.
+
+    Args:
+        mensaje (str): El texto informativo para el usuario.
+
+    Returns:
+        str: La cadena de texto validada.
+    """
+    cadena = input(mensaje)
+    if cadena.isalpha():
+        return cadena
+    else:
+        print("Ingrese solo letras")
+        return validar_cadena_solo_letras(mensaje)
+
+
 def menu() -> None:
     """
     Ejecuta el ciclo principal del sistema de reservas.
