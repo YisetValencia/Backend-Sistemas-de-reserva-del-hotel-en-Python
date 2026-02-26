@@ -21,7 +21,7 @@ class HabitacionPresidencial(Habitacion):
     def calcular_costo(self, dias: int) -> float:
         """
         Calcula el costo del servicio adicional (cine integrado)
-        y retorna el valor total.
+        y retorna el valor total
 
         """
         valor_servicio_cine = 300000
