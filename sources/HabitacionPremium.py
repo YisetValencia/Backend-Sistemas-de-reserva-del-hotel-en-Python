@@ -4,7 +4,7 @@ from sources.Habitacion import Habitacion
 
 
 class HabitacionPremium(Habitacion):
-    """La clase HabitacionPremium hereda de la clase Habitacion y representa una habitación de hotel de tipo premium, que incluye un servicio adicional de jacuzzi."""
+    """La clase HabitacionPremium hereda de la clase Habitacion y representa una habitación de hotel de tipo premium, que incluye un servicio adicional de jacuzzi"""
 
     def __init__(
         self,
