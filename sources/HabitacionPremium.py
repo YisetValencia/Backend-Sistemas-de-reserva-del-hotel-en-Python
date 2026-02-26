@@ -15,7 +15,7 @@ class HabitacionPremium(Habitacion):
         super().__init__(id, numero_habitacion, tipo_habitacion, precio)
         self.servicio_yacuzzi = servicio_yacuzzi
 
-    """ El método _init_ de la clase HabitacionPremium llama al método _init_ de la clase base Habitacion para inicializar los atributos heredados, y luego inicializa el atributo servicio_yacuzzi para indicar si el servicio de jacuzzi está habilitado. """
+    """ El método _init_ de la clase HabitacionPremium llama al método _init_ de  la clase base Habitacion para inicializar los atributos heredados, y luego inicializa el atributo servicio_yacuzzi para indicar si el servicio de jacuzzi está habilitado. """
 
     def calcular_costo(self, noches) -> float:
 
