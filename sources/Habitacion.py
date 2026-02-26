@@ -66,7 +66,7 @@ class Habitacion:
 
     def __str__(self) -> str:
         """
-        Devuelve una representación en texto de la habitación.
+        Devuelve una representación en texto de la habitación..
 
         return: Cadena con la información principal y su disponibilidad.
         """
