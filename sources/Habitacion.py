@@ -57,7 +57,7 @@ class Habitacion:
         Calcula el costo total de la estadía según la cantidad de días.
 
         dias: Número de días de hospedaje.
-        return: Costo total de la estadía. Retorna 0 si los días son inválidos.
+        return: Costo total de la estadía. Retorna 0 si los días son inválidos
         """
         if dias <= 0:
             print("El número de días debe ser mayor que cero.")
