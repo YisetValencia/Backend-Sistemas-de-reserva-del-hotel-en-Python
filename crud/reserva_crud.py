@@ -15,7 +15,7 @@ class ReservaCRUD:
         - actualizar_costo_total(db: Session, id_reserva: UUID, monto_extra: float) -> Reserva
 
     Notas:
-        - Se valida que la fecha de entrada sea menor a la de salida.
+        - Se valida que la fecha de entrada en este caso sea menor a la de salida.
         - Al cancelar una reserva se recomienda actualizar el estado de la habitación.
     """
 
