@@ -7,7 +7,7 @@ class ReservaServiciosCRUD:
     """
     Módulo CRUD para la entidad Reserva_Servicios.
 
-    Administra la relación entre las reservas y los servicios adicionales contratados.
+    Administra la relación que hay entre las reservas y los servicios adicionales contratados.
 
     Funciones principales:
         - crear_reserva_servicio(db: Session, reserva_servicio: Reserva_Servicios) -> Reserva_Servicios
