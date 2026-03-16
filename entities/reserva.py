@@ -16,7 +16,7 @@ import uuid
 
 class Reserva(Base):
     """ ""
-    Representa la entidad de reserva.
+    Representa la entidad reserva.
     """
 
     __tablename__ = "reserva"
