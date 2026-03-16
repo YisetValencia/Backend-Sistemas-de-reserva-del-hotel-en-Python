@@ -6,7 +6,7 @@ from database.config import Base
 class ReservaServicios(Base):
     """
     Representa la tabla de asociación entre las entidades Reserva y Servicios_Adicionales.
-    Esta clase define una relación de varios a varios entre reservas y servicios adicionales.
+    Esta clase define una relación de varios a varios que hay entre reservas y servicios adicionales.
     Cada instancia vincula una reserva (`id_reserva`) con un servicio adicional (`id_servicio`).
     """
 
