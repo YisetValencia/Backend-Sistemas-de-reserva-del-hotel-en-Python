@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from sqlalchemy.dialects.postgresql import UUID
 from entities.reserva import Reserva
-from entities.reserva_servicios import Reserva_Servicios
+from entities.reserva_servicios import ReservaServicios
 
 
 class ReservaCRUD:
@@ -83,8 +83,8 @@ class ReservaCRUD:
         if not reserva:
             raise ValueError("La reserva no existe.")
 
-        db.query(Reserva_Servicios).filter(
-            Reserva_Servicios.id_reserva == id_reserva
+        db.query(ReservaServicios).filter(
+            ReservaServicios.id_reserva == id_reserva
         ).delete()
 
         db.delete(reserva)
