@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from entities.usuario import Usuario
 from sqlalchemy.dialects.postgresql import UUID
 from entities.reserva import Reserva
-from entities.reserva_servicios import Reserva_Servicios
+from entities.reserva_servicios import ReservaServicios
 
 class UsuarioCRUD:
     """
