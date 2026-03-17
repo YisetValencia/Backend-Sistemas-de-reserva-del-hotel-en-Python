@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from sqlalchemy.dialects.postgresql import UUID
-from entities.reserva_servicios import Reserva_Servicios
+from entities.reserva_servicios import ReservaServicios
 
 
 class ReservaServiciosCRUD:
