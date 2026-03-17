@@ -1,3 +1,9 @@
+from sqlalchemy.orm import Session
+from sqlalchemy.dialects.postgresql import UUID
+from entities.reserva import Reserva
+from entities.reserva_servicios import Reserva_Servicios
+
+
 class ReservaCRUD:
     """
     Módulo CRUD para la entidad Reserva.
