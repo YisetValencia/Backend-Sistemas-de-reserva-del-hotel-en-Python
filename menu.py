@@ -2,10 +2,10 @@ from database.config import SessionLocal, create_tables
 from crud.reserva_crud import ReservaCRUD
 from crud.tipo_habitacion_crud import TipoHabitacionCRUD
 from crud.usuario_crud import UsuarioCRUD
-from crud.habitacion_crud import HabitacionCRUD
+from crud.habitacion_crud import HabitacionCrud
 from crud.servicios_adicioneles_crud import ServiciosAdicionalesCRUD
 from entities.servicios_adicionales import Servicios_Adicionales
-from entities.reserva_servicios import Reserva_Servicios
+from entities.reserva_servicios import ReservaServicios
 from entities.usuario import Usuario
 from entities.reserva import Reserva
 from entities.habitacion import Habitacion
