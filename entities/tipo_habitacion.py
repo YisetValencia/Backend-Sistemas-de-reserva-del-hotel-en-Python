@@ -38,5 +38,5 @@ class Tipo_Habitacion(Base):
         back_populates="tipos_habitacion_editados",
     )
 
-    def _repr_(self):
+    def repr(self):
         return f"<Tipo_Habitacion(id={self.id_tipo}, nombre_tipo={self.nombre_tipo})>"
