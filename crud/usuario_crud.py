@@ -4,6 +4,7 @@ from sqlalchemy.dialects.postgresql import UUID
 from entities.reserva import Reserva
 from entities.reserva_servicios import ReservaServicios
 
+
 class UsuarioCRUD:
     """
     Módulo CRUD para la entidad Usuario.
@@ -24,15 +25,21 @@ class UsuarioCRUD:
         - Valida que el nombre de usuario sea único y no exceda 50 caracteres.
         - La contraseña no debe exceder 10 caracteres.
     """
+
     def __init__(self, db):
         self.db = db
+
     @staticmethod
     def crear_usuario(db: Session, nuevo_usuario: Usuario):
         existente = (
-            db.query(Usuario).filter(Usuario.nombre_usuario == nuevo_usuario.nombre_usuario).first()
+            db.query(Usuario)
+            .filter(Usuario.nombre_usuario == nuevo_usuario.nombre_usuario)
+            .first()
         )
         if existente:
-            raise ValueError(f"El nombre de usuario '{Usuario.nombre_usuario}' ya está en uso.")
+            raise ValueError(
+                f"El nombre de usuario '{Usuario.nombre_usuario}' ya está en uso."
+            )
 
         db.add(nuevo_usuario)
         db.commit()
@@ -45,14 +52,20 @@ class UsuarioCRUD:
 
     @staticmethod
     def obtener_usuario_por_nombre(db: Session, nombre_usuario: str):
-        return db.query(Usuario).filter(Usuario.nombre_usuario == nombre_usuario.strip()).first()
+        return (
+            db.query(Usuario)
+            .filter(Usuario.nombre_usuario == nombre_usuario.strip())
+            .first()
+        )
 
     @staticmethod
     def obtener_usuarios(db: Session, skip: int = 0, limit: int = 100):
         return db.query(Usuario).offset(skip).limit(limit).all()
 
     @staticmethod
-    def actualizar_usuario(db: Session, id_usuario: UUID, id_usuario_edita: UUID = None, **kwargs):
+    def actualizar_usuario(
+        db: Session, id_usuario: UUID, id_usuario_edita: UUID = None, **kwargs
+    ):
         usuario = db.query(Usuario).filter(Usuario.id_usuario == id_usuario).first()
         if not usuario:
             return None
@@ -61,13 +74,17 @@ class UsuarioCRUD:
             nuevo_nombre = kwargs["nombre_usuario"].strip()
             if len(nuevo_nombre) > 50:
                 raise ValueError("El nombre de usuario no puede exceder 50 caracteres")
-            existente = db.query(Usuario).filter(Usuario.nombre_usuario == nuevo_nombre).first()
+            existente = (
+                db.query(Usuario).filter(Usuario.nombre_usuario == nuevo_nombre).first()
+            )
             if existente and existente.id_usuario != id_usuario:
                 raise ValueError("Ya existe un usuario con ese nombre")
             kwargs["nombre_usuario"] = nuevo_nombre
 
         if "clave" in kwargs and len(kwargs["clave"]) > 10:
-            raise ValueError(status_code=400, detail="La clave no puede exceder 10 caracteres")
+            raise ValueError(
+                status_code=400, detail="La clave no puede exceder 10 caracteres"
+            )
 
         usuario.id_usuario_edita = id_usuario_edita
         for key, value in kwargs.items():
@@ -86,7 +103,9 @@ class UsuarioCRUD:
                 return False
             reservas = db.query(Reserva).filter(Reserva.id_usuario == id_usuario).all()
             for reserva in reservas:
-                db.query(Reserva_Servicios).filter(Reserva_Servicios.id_reserva == reserva.id_reserva).delete()
+                db.query(ReservaServicios).filter(
+                    ReservaServicios.id_reserva == reserva.id_reserva
+                ).delete()
             db.query(Reserva).filter(Reserva.id_usuario == id_usuario).delete()
 
             db.delete(usuario)
@@ -97,6 +116,7 @@ class UsuarioCRUD:
             db.rollback()
             print(f"Error al eliminar usuario: {e}")
             return False
+
     def autenticar_usuario(self, nombre_usuario: str, contrasena: str):
         """
         Autenticar un usuario usando nombre de usuario o email y contraseña en texto plano.
