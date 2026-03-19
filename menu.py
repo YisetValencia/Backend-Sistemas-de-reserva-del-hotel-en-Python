@@ -21,7 +21,7 @@ class SistemaGestion:
         operaciones CRUD de cada módulo del sistema."""
         self.db = SessionLocal()
         self.usuario_crud = UsuarioCRUD(self.db)
-        self.habitacion_crud = HabitacionCRUD(self.db)
+        self.habitacion_crud = HabitacionCrud(self.db)
         self.reserva_crud = ReservaCRUD(self.db)
         self.servicios_adicionales_crud = ServiciosAdicionalesCRUD(self.db)
         self.tipo_habitacion_crud = TipoHabitacionCRUD(self.db)
@@ -467,7 +467,7 @@ class SistemaGestion:
             for i in seleccion_indices:
                 servicio = servicios[i]
                 subtotal = servicio.precio
-                reserva_servicio = Reserva_Servicios(
+                reserva_servicio = ReservaServicios(
                     id_reserva=reserva_seleccionada.id_reserva,
                     id_servicio=servicio.id_servicio,
                 )
