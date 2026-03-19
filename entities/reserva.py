@@ -15,7 +15,7 @@ import uuid
 
 
 class Reserva(Base):
-    """ ""
+    """
     Representa la entidad reserva.
     """
 
@@ -45,7 +45,7 @@ class Reserva(Base):
         "Usuario", foreign_keys=[id_usuario], back_populates="reservas"
     )
     habitacion = relationship("Habitacion", back_populates="reservas")
-    servicios = relationship("Reserva_Servicios", back_populates="reserva")
+    servicios = relationship("ReservaServicios", back_populates="reserva")
 
     usuario_crea = relationship(
         "Usuario", foreign_keys=[id_usuario_crea], back_populates="reservas_creadas"
