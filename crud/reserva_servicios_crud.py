@@ -20,7 +20,7 @@ class ReservaServiciosCRUD:
         self.db = db
 
     @staticmethod
-    def crear_reserva_servicio(db: Session, reserva_servicio: Reserva_Servicios):
+    def crear_reserva_servicio(db: Session, reserva_servicio: ReservaServicios):
         if not reserva_servicio.id_reserva or not reserva_servicio.id_servicio:
             raise ValueError(
                 "El registro debe estar asociado a una reserva y un servicio"
@@ -34,8 +34,8 @@ class ReservaServiciosCRUD:
     @staticmethod
     def obtener_reserva_servicio(db: Session, id_reserva_servicio: UUID):
         rs = (
-            db.query(Reserva_Servicios)
-            .filter(Reserva_Servicios.id_reserva_servicio == id_reserva_servicio)
+            db.query(ReservaServicios)
+            .filter(ReservaServicios.id_reserva_servicio == id_reserva_servicio)
             .first()
         )
         if not rs:
@@ -44,13 +44,13 @@ class ReservaServiciosCRUD:
 
     @staticmethod
     def obtener_reservas_servicios(db: Session, skip: int = 0, limit: int = 100):
-        return db.query(Reserva_Servicios).offset(skip).limit(limit).all()
+        return db.query(ReservaServicios).offset(skip).limit(limit).all()
 
     @staticmethod
     def eliminar_reserva_servicio(db: Session, id_reserva_servicio: UUID) -> bool:
         rs = (
-            db.query(Reserva_Servicios)
-            .filter(Reserva_Servicios.id_reserva_servicio == id_reserva_servicio)
+            db.query(ReservaServicios)
+            .filter(ReservaServicios.id_reserva_servicio == id_reserva_servicio)
             .first()
         )
         if not rs:
