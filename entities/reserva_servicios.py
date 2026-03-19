@@ -27,4 +27,4 @@ class ReservaServicios(Base):
     )
 
     def __repr__(self):
-        return f"<Reserva_Servicios(id_reserva={self.id_reserva}, id_servicio={self.id_servicio})>"
+        return f"<ReservaServicios(id_reserva={self.id_reserva}, id_servicio={self.id_servicio})>"
