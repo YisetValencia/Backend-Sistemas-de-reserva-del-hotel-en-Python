@@ -133,6 +133,11 @@ pip install -r requirements.txt
 python menu.py
 ```
 
+**Link del video**
+```bash
+https://drive.google.com/file/d/1rP27aROTao0t6BpePL4lbCAhQGj8FlhU/view?usp=drivesdk
+```
+
 En consola verás la pantalla de login:
 
 ```bash
