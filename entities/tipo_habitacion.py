@@ -9,7 +9,7 @@ class Tipo_Habitacion(Base):
     Representa la entidad tipo de habitacion dentro del sistema de reservas del hotel
     """
 
-    _tablename_ = "tipo_habitacion"
+    __tablename__ = "tipo_habitacion"
 
     id_tipo = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     nombre_tipo = Column(String)

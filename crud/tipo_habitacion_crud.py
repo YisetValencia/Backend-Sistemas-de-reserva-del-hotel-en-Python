@@ -20,7 +20,7 @@ class TipoHabitacionCRUD:
         - Se valida que no se repitan tipos de habitación con el mismo nombre.
     """
 
-    def _init_(self, db):
+    def __init__(self, db):
         self.db = db
 
     @staticmethod
