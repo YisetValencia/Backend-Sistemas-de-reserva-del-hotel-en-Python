@@ -25,20 +25,19 @@ class ReservaCRUD:
         - Al cancelar una reserva se recomienda actualizar el estado de la habitación.
     """
 
-    def __init__(self, db):
-        self.db = db
-
     @staticmethod
     def crear_reserva(db: Session, reserva: Reserva):
+
         if not reserva.id_usuario or not reserva.id_habitacion:
             raise ValueError(
                 "La reserva debe estar asociada a un cliente y una habitación"
             )
 
         if reserva.fecha_entrada >= reserva.fecha_salida:
-            raise ValueError(
-                "La fecha de entrada debe ser anterior a la fecha de salida"
-            )
+            raise ValueError("La fecha de entrada debe ser anterior a la de salida")
+
+        delta = reserva.fecha_salida - reserva.fecha_entrada
+        reserva.noches = delta.days
 
         db.add(reserva)
         db.commit()
@@ -67,11 +66,15 @@ class ReservaCRUD:
                 setattr(reserva, key, value)
 
         if (
-            reserva.fecha_inicio
-            and reserva.fecha_fin
-            and reserva.fecha_inicio >= reserva.fecha_fin
+            reserva.fecha_entrada
+            and reserva.fecha_salida
+            and reserva.fecha_entrada >= reserva.fecha_salida
         ):
-            raise ValueError("La fecha de inicio debe ser anterior a la fecha de fin")
+            raise ValueError("La fecha de entrada debe ser anterior a la de salida")
+
+        if reserva.fecha_entrada and reserva.fecha_salida:
+            delta = reserva.fecha_salida - reserva.fecha_entrada
+            reserva.noches = delta.days
 
         db.commit()
         db.refresh(reserva)
@@ -101,5 +104,6 @@ class ReservaCRUD:
             raise ValueError("Reserva no encontrada")
 
         reserva.costo_total += monto_extra
-        db.add(reserva)
+        db.commit()  # <--- Crucial
+        db.refresh(reserva)
         return reserva
